@@ -1,12 +1,13 @@
 FROM nginx:alpine
 
-# Limpia contenido por defecto
+# Limpia el contenido por defecto
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copia los archivos del frontend
-COPY index.html app.js /usr/share/nginx/html/
+# Copia los archivos indicando que están dentro de la carpeta frontend
+COPY ./frontend/index.html ./frontend/app.js /usr/share/nginx/html/
 
-# Copia la configuración custom de Nginx
-COPY default.conf /etc/nginx/conf.d/default.conf
+# Copia la configuración custom indicando la ruta correcta
+COPY ./frontend/default.conf /etc/nginx/conf.d/default.conf
 
+# El puerto que pide tu laboratorio
 EXPOSE 3000
