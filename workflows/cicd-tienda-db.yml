@@ -1,0 +1,13 @@
+name: CI/CD Tienda Perritos - DB
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "db/**"
+
+jobs:
+  build-push-deploy-db:
+    runs-on: ubuntu-latest
+
+    
