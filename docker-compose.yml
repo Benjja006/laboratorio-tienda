@@ -3,5 +3,5 @@ services:
   web:
     image: benjja006/petstore:latest
     ports:
-      - "3000:3000"
+      - "3000:80"
     restart: always
