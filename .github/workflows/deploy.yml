@@ -1,23 +1,23 @@
 name: CI/CD Pipeline PetStore
 on:
   push:
-    [cite_start]branches: [main] # Se activa cuando subes algo a la rama main [cite: 27]
+    branches: [main]
 
 jobs:
   build-and-push:
-    [cite_start]runs-on: ubuntu-latest # Se ejecuta en servidores de GitHub [cite: 30]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout del código
-        [cite_start]uses: actions/checkout@v4 # Descarga tu código [cite: 32]
+        uses: actions/checkout@v4
 
       - name: Login en Docker Hub
-        [cite_start]uses: docker/login-action@v3 # Se loguea con tus secretos [cite: 33]
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Construir y subir imagen
-        [cite_start]uses: docker/build-push-action@v5 # Crea y sube la imagen [cite: 36]
+        uses: docker/build-push-action@v5
         with:
           push: true
-          [cite_start]tags: ${{ secrets.DOCKERHUB_USERNAME }}/petstore:latest [cite: 39]
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/petstore:latest
